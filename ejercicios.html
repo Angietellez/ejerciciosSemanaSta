@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJERCICIOS SEMANA SANTA</title>
+</head>
+
+<body>
+    <!------------------EJERCICIO NO.3:  CRONOMETRO------------------------>
+    <div onload="cronometro()" id="crono">
+        <h3>-- CRONOMETRO --</h3>
+        <p id="min_seg">
+            <span id="minutos">00</span>:<span id="segundos">00</span>
+        </p>
+    </div>
+
+    <script>
+
+        /* Hola profe, te cuento que no pude hacer varios ejercicios, algunos por fallas minimas pero que no logre identificar y en otros 
+        si no tengo ni idea, de verdad aun tengo muchos vacios y hay cosas que no entiendo:
+        Ejercicio 1: Me quedo bien   :)
+        Ejercicio 2: No logre sumar los elementos que estan dentro del arrayEdades, si uso +=me marca error y si uso solo + no me sale nada.
+        Ejercicio 3: Me quedo bien   :)
+        Ejercicio 4: No logro sumar solo las vocales, estoy sumando todas las letras, no se como hacerlo   :(
+        Ejercicio 5: Me quedo bien   :)
+        Ejercicio 6: No tengo la mas minina idea de como hacerlo profe   :(
+        Ejercicio 7: Me quedo bien   :)
+        Ejercicio 8: Tampoco tengo idea de como hacerlo 
+        Ejercicio 9:
+        Ejercicio 9: No tengo idea  :(
+        
+            PDTA: Profe en cuanto al ejercicio 3 del anterior taller me quiero disculpar contigo porque tienes toda la razon pero 
+            te juro que mi idea no era presentar el mismo ejercicio de mis compañeros a veces copio y pego ejercicios de otras
+            personas en mi html para comparar o analizarlos y quiza lo pegue pero me puse a hacer otra cosa y lo deje hay y 
+            olvide el tema, tu sabes que yo siempre que no puedo hacer algun ejercicio te lo envio vacio o incompleto, fue un mal 
+            entendido pero no volvera a suceder profe.
+         */
+
+        // ----------------- EJERCICIO NO. 1:    El numero es positivo o negativo? -------------------
+        let opcionUsuario = prompt("Ingrese una opcion: 1) 2) 3) 4) 5) 6) 7) 8)");
+
+        switch (opcionUsuario) {
+
+            case "1":
+                let numeroUsuario = prompt('Ingrese un numero POSITIVO o NEGATIVO');
+
+                if (numeroUsuario < 0) {
+                    alert('Es un numero negativo');
+                } else {
+                    alert('Es un numero positivo');
+                }
+                break;
+
+
+            // ---------------------- EJERCICIO NO. 2:    Suma de edades y promedio: ------------------- 
+            case "2":
+                // No logre sumar los elementos que estan dentro del arrayEdades, si uso +=me marca error y si uso solo + no me sale nada.
+
+                var arrayEdades = [];
+                var total = arrayEdades + arrayEdades;
+                var promedio = total / cantidadPersonas;
+
+                var cantidadPersonas = Number(prompt('Ingrese la cantidad de personas'));
+                var j = 1;
+                do {
+                    var edades = Number(prompt('Ingrese las edades de las personas separadas por comas'));
+                    arrayEdades.push(edades);
+                    j++;
+                } while (j <= cantidadPersonas);
+
+                document.write(`La suma total de las edades es: ${total}  y el promedio de edad es: ${promedio}`);
+
+
+                console.log(total);
+                console.log(arrayEdades);
+
+                break;
+
+
+            // ------------------ EJERCICIO NO. 3:    Cronometro: ---------------------- 
+            case "3":
+
+                contadorSegundos = 0;
+                contadorMinutos = 0;
+                seg = document.getElementById('segundos');
+                min = document.getElementById('minutos');
+
+                function cronometro() {
+                    contadorSegundos++;
+                    seg.innerHTML = contadorSegundos;
+
+                    if (contadorSegundos === 60) {
+                        clearInterval(intervaloSeg);
+                        contadorMinutos = 1;
+                        contadorSegundos = 0;
+                    }
+                    min.innerHTML = contadorMinutos;
+                    seg.innerHTML = contadorSegundos;
+                }
+                intervaloSeg = setInterval(cronometro, 1000);
+
+                break;
+
+
+            // ----------------------- EJERCICIO NO. 4:    Cuantas vocales tiene una palabra: --------------------------------- 
+            case "4":
+                // No se como contar solo las vocales
+                let palabraUsuario = prompt('Ingresa una palabra');
+                // let arrayVocales = [palabraUsuario];
+                let arrayVocales = palabraUsuario.split("");
+                let vocales = 0;
+
+                for (i = 0; i < arrayVocales.length; i++) {
+                    if (arrayVocales[i] == 'a' || 'e' || 'i' || 'o' || 'u' && arrayVocales[i] !== 'b' && 'c' || 'd')
+                        vocales++;
+
+                }
+
+                document.write(`La palabra que ingresaste tiene: ${vocales} vocales`);
+                console.log(arrayVocales);
+            
+             break; 
+
+
+                // --------------- EJERCICIO NO. 5:  Area de Cuadrado, rectangulo, triangulo y circulo: --------------------- 
+                case "5":
+                let areaFiguras = prompt("Ingrese una opcion: A) B) C) D) ");
+                areaFiguras = areaFiguras.toLocaleUpperCase();
+                switch (areaFiguras) {
+                    case "A":
+                        cuadrado = Number(prompt('Ingrese la base del cuadrado'));
+                        document.write(`El area del cuadrado es: ${cuadrado * cuadrado}`)
+                        break;
+
+                    case "B":
+                        anchoRectangulo = Number(prompt('Ingrese la base del rectangulo'));
+                        altoRectangulo = Number(prompt('Ingrese la base del rectangulo'));
+                        document.write(`El area del rectangulo es: ${anchoRectangulo * altoRectangulo}`)
+                        break;
+
+                    case "C":
+                        anchoTriangulo = Number(prompt('Ingrese la base del triangulo'));
+                        altoTriangulo = Number(prompt('Ingrese la base del triangulo'));
+                        document.write(`El area del triangulo es: ${(anchoTriangulo * altoTriangulo) / 2}`)
+                        break;
+
+                    case "D":
+                        radioCirculo = Number(prompt('Ingrese el radio del circulo'));
+                        document.write(`El area del circulo es: ${Math.PI * (Math.pow(radioCirculo, 2))}`)
+                        break;
+                    default:
+                        alert("No es una opcion entre A y D");
+                }
+                break;
+
+
+                // --------------- EJERCICIO NO. 6:  Ventas de un supermercado: --------------------- 
+
+           //     5 cajeros realizan su jornada laboral de 8 horas diarias, al trabajar 80 dias el supermercado desea hacerles saber lo siguiente:
+            //    - total de ventas de todos los cajeros
+              //      - quien fue el cajero que vendio mas(total de ventas de un solo cajero)
+                //        - En qué día se vendió más y quién fue el cajero responsable de ese día
+                  //          - Mostrar el cajero que menos ventas hizo el día 60
+                     //           - Mostrar el mejor y el peor cajero del día 30
+ 
+            case "6":
+
+            break;   
+
+
+            // ---------------------- EJERCICIO NO. 7:  Multiplos de 8: ---------------------------------- 
+            case "7":
+                for (i = 0; i <= 500; i++) {
+                    if ([i] % 8 == 0)
+                        document.write(`Los multiplos de 8 son: ${[i]} <br>`);
+                }
+
+                break;  
+
+
+                // ---------------------- EJERCICIO NO. 8:  Figuras usando ciclos: ---------------------------------- 
+                case "8":  
+                // Este codigo no es mio, lo saque de internet e intente modificarlo para hacer otras figuras pero no pude.
+                var cadena = "* ";
+                var piramide = "";
+
+                for (i = 0; i < 9; i++) {
+                    console.log(i);
+                    piramide += cadena;
+                    document.write(piramide + "<br>");
+
+                }
+
+                break;
+            default:
+                alert("No es un número entre 1 y 8");
+        }
+ 
+
+        let crono = document.getElementById('crono');
+        crono.style.background = "lightblue";
+        crono.style.width = "450px";
+        crono.style.height = "150px";
+        crono.style.textAlign = "center";
+        crono.style.marginLeft = "40%";
+        crono.style.marginTop = "10%";
+        crono.style.borderRadius = "30px";
+        crono.style.fontSize = "35px";
+
+        let min_seg = document.getElementById('min_seg');
+        min_seg.style.background = "gray";
+        min_seg.style.width = "130px";
+        min_seg.style.fontSize = "50px";
+        min_seg.style.textAlign = "center";
+        min_seg.style.marginLeft = "37%";
+        min_seg.style.marginTop = "-5%";
+        min_seg.style.borderRadius = "20px";
+
+    </script>
+</body>
+
+</html>
